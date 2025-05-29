@@ -6,3 +6,5 @@ export const colors = {
   text: "#E2E8F0", // Light gray for text
   cardBg: "#1E293B", // Card background
 } as const;
+
+export const discordInvite = "https://discord.gg/W8QvQf86YE";

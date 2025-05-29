@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Button, Group, Container, Box } from "@mantine/core";
+import { discordInvite } from "../constants";
 
 export function Header() {
   return (
@@ -31,12 +32,12 @@ export function Header() {
             </Button>
             <Button
               component={Link}
-              to="/about"
+              to={discordInvite}
               variant="subtle"
               color="gray"
               style={{ fontWeight: 700, fontSize: 18 }}
             >
-              About
+              Discord
             </Button>
           </Group>
           <Group>

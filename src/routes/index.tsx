@@ -277,8 +277,8 @@ function FeaturesSection() {
 
 function StatsSection() {
   const stats = {
-    activeClans: 50,
-    playersMatched: 1000,
+    activeClans: 500,
+    playersMatched: 1,
     successRate: 90,
     countries: 12,
   };
@@ -318,7 +318,7 @@ function StatsSection() {
               order={2}
               style={{ color: colors.accent, fontWeight: 900, fontSize: 40 }}
             >
-              {stats.activeClans}
+              {stats.activeClans}+
             </Title>
             <Text size="lg" style={{ color: colors.text, fontWeight: 600 }}>
               Active Clans
@@ -340,7 +340,7 @@ function StatsSection() {
               order={2}
               style={{ color: colors.accent, fontWeight: 900, fontSize: 40 }}
             >
-              {stats.playersMatched}K
+              {stats.playersMatched}K+
             </Title>
             <Text size="lg" style={{ color: colors.text, fontWeight: 600 }}>
               Players Matched

@@ -1,15 +1,11 @@
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
+import { createRootRoute, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { Providers } from "../components/Providers";
 import { Footer } from "../components/Footer";
-import { Button, Group, Container, Box } from "@mantine/core";
 import { Header } from "../components/Header";
 import { colors } from "../constants";
 
 export const Route = createRootRoute({
-  loader: async () => {
-    console.log("root route loader");
-  },
   component: () => (
     <div
       style={{

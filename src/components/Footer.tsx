@@ -11,6 +11,7 @@ import {
   SimpleGrid,
 } from "@mantine/core";
 import { IconBrandDiscord, IconBrandTwitter } from "@tabler/icons-react";
+import { discordInvite } from "../constants";
 
 const socialLinks = [
   {
@@ -21,7 +22,7 @@ const socialLinks = [
   {
     icon: IconBrandDiscord,
     label: "Discord",
-    href: "https://discord.gg/W8QvQf86YE",
+    href: discordInvite,
   },
 ];
 
