@@ -477,6 +477,84 @@ function TestimonialsSection() {
   );
 }
 
+function DemoSection() {
+  return (
+    <Box style={{ position: "relative", zIndex: 1, padding: "80px 0" }}>
+      {/* Glowing orb background */}
+      <Box
+        style={{
+          position: "absolute",
+          top: "20%",
+          right: "10%",
+          width: 200,
+          height: 200,
+          background: "#a78bfa",
+          opacity: 0.08,
+          filter: "blur(60px)",
+          borderRadius: "50%",
+          zIndex: 0,
+        }}
+      />
+      <Container size="lg" style={{ position: "relative", zIndex: 1 }}>
+        <Stack align="center" gap="xl">
+          <Title
+            order={2}
+            ta="center"
+            style={{ fontWeight: 800, color: colors.text, fontSize: 38 }}
+          >
+            See It In Action
+          </Title>
+          <Text
+            size="lg"
+            ta="center"
+            maw={600}
+            style={{ color: colors.text, fontSize: 20 }}
+          >
+            Watch how Clash Recruit helps you find the perfect clan or recruit
+            the best players
+          </Text>
+          <Card
+            withBorder
+            radius="lg"
+            style={{
+              background: "rgba(30,41,59,0.85)",
+              boxShadow: "0 8px 32px 0 #0003",
+              border: `1.5px solid ${colors.accent}22`,
+              backdropFilter: "blur(8px)",
+              width: "100%",
+              maxWidth: 800,
+              overflow: "hidden",
+            }}
+          >
+            <Box
+              style={{
+                position: "relative",
+                paddingTop: "56.25%", // 16:9 aspect ratio
+                width: "100%",
+              }}
+            >
+              <iframe
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  border: "none",
+                }}
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?modestbranding=1&rel=0"
+                title="Clash Recruit Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </Box>
+          </Card>
+        </Stack>
+      </Container>
+    </Box>
+  );
+}
+
 function CTASection() {
   return (
     <Box style={{ position: "relative", zIndex: 1, padding: "80px 0" }}>
@@ -534,6 +612,7 @@ function Index() {
       <FeaturesSection />
       <StatsSection />
       <TestimonialsSection />
+      <DemoSection />
       <CTASection />
     </div>
   );
