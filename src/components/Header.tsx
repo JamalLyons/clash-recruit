@@ -1,11 +1,19 @@
 import { Link } from "@tanstack/react-router";
 import { Button, Group, Container, Box, Loader } from "@mantine/core";
 import { discordInvite } from "../constants";
-import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
+import {
+  Authenticated,
+  Unauthenticated,
+  AuthLoading,
+  useConvexAuth,
+} from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
 
 export function Header() {
   const { signOut } = useAuthActions();
+
+  const authState = useConvexAuth();
+  console.log(authState);
 
   return (
     <Box
