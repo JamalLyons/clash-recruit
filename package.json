@@ -8,9 +8,13 @@
     "build": "tsc -b && vite build",
     "format": "npx @biomejs/biome format --write ./",
     "lint": "npx @biomejs/biome lint --write ./",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "convex": "pnpm dlx convex dev --tail-logs",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@auth/core": "0.37.0",
+    "@convex-dev/auth": "^0.0.86",
     "@mantine/carousel": "^8.0.2",
     "@mantine/core": "^8.0.2",
     "@mantine/form": "^8.0.2",
@@ -20,6 +24,7 @@
     "@tabler/icons-react": "^3.33.0",
     "@tanstack/react-router": "^1.120.12",
     "@tanstack/react-router-devtools": "^1.120.12",
+    "convex": "^1.24.3",
     "embla-carousel": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "react": "^19.1.0",
@@ -28,6 +33,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@tanstack/router-plugin": "^1.120.12",
+    "@types/node": "^22.15.29",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react-swc": "^3.9.0",

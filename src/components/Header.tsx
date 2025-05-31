@@ -1,8 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Button, Group, Container, Box } from "@mantine/core";
+import { Button, Group, Container, Box, Loader } from "@mantine/core";
 import { discordInvite } from "../constants";
+import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
+import { useAuthActions } from "@convex-dev/auth/react";
 
 export function Header() {
+  const { signOut } = useAuthActions();
+
   return (
     <Box
       style={{
@@ -33,28 +37,39 @@ export function Header() {
             <Button
               component={Link}
               to={discordInvite}
+              target="_blank"
               variant="subtle"
               color="gray"
               style={{ fontWeight: 700, fontSize: 18 }}
             >
-              Discord
+              Our Discord
             </Button>
           </Group>
           <Group>
-            <Button
-              variant="outline"
-              color="orange"
-              style={{ fontWeight: 700, fontSize: 16 }}
-            >
-              Sign In
-            </Button>
-            <Button
-              variant="filled"
-              color="orange"
-              style={{ fontWeight: 700, fontSize: 16 }}
-            >
-              Sign Up
-            </Button>
+            <AuthLoading>
+              <Loader size={"md"} color="orange" />
+            </AuthLoading>
+            <Unauthenticated>
+              <Button
+                component={Link}
+                to="/sign-in"
+                variant="filled"
+                color="orange"
+                style={{ fontWeight: 700, fontSize: 16 }}
+              >
+                Sign In
+              </Button>
+            </Unauthenticated>
+            <Authenticated>
+              <Button
+                onClick={() => signOut()}
+                variant="filled"
+                color="orange"
+                style={{ fontWeight: 700, fontSize: 16 }}
+              >
+                Sign Out
+              </Button>
+            </Authenticated>
           </Group>
         </Group>
       </Container>
