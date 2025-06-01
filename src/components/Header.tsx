@@ -1,8 +1,26 @@
 import { Link } from "@tanstack/react-router";
-import { Button, Group, Container, Box, Loader } from "@mantine/core";
+import {
+  Button,
+  Group,
+  Container,
+  Box,
+  Loader,
+  Menu,
+  Avatar,
+  Text,
+} from "@mantine/core";
 import { discordInvite } from "../constants";
 import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import { useAuthActions } from "@convex-dev/auth/react";
+import {
+  IconUser,
+  IconUsers,
+  IconSearch,
+  IconPlus,
+  IconLogout,
+  IconSettings,
+  IconBell,
+} from "@tabler/icons-react";
 
 export function Header() {
   const { signOut } = useAuthActions();
@@ -24,51 +42,122 @@ export function Header() {
     >
       <Container size="lg">
         <Group justify="space-between">
-          <Group>
-            <Button
-              component={Link}
-              to="/"
-              variant="subtle"
-              color="gray"
-              style={{ fontWeight: 700, fontSize: 18 }}
-            >
-              Home
-            </Button>
-            <Button
-              component={Link}
-              to={discordInvite}
-              target="_blank"
-              variant="subtle"
-              color="gray"
-              style={{ fontWeight: 700, fontSize: 18 }}
-            >
-              Our Discord
-            </Button>
-          </Group>
+          {/* Logo/Brand */}
+          <Button
+            component={Link}
+            to="/"
+            variant="subtle"
+            color="gray"
+            style={{ fontWeight: 700, fontSize: 20 }}
+          >
+            Clash Recruit
+          </Button>
+
+          {/* Navigation */}
           <Group>
             <AuthLoading>
-              <Loader size={"md"} color="orange" />
+              <Loader size="md" color="orange" />
             </AuthLoading>
+
             <Unauthenticated>
-              <Button
-                component={Link}
-                to="/sign-in"
-                variant="filled"
-                color="orange"
-                style={{ fontWeight: 700, fontSize: 16 }}
-              >
-                Sign In
-              </Button>
+              <Group>
+                <Button
+                  component={Link}
+                  to={discordInvite}
+                  target="_blank"
+                  variant="subtle"
+                  color="gray"
+                  leftSection={<IconUsers size={18} />}
+                >
+                  Join Discord
+                </Button>
+                <Button
+                  component={Link}
+                  to="/sign-in"
+                  variant="filled"
+                  color="orange"
+                  style={{ fontWeight: 600 }}
+                >
+                  Get Started
+                </Button>
+              </Group>
             </Unauthenticated>
+
             <Authenticated>
-              <Button
-                onClick={() => signOut()}
-                variant="filled"
-                color="orange"
-                style={{ fontWeight: 700, fontSize: 16 }}
-              >
-                Sign Out
-              </Button>
+              <Group>
+                {/* Search Clans */}
+                <Button
+                  component={Link}
+                  to="/search"
+                  variant="subtle"
+                  color="gray"
+                  leftSection={<IconSearch size={18} />}
+                >
+                  Find Clans
+                </Button>
+
+                {/* Create Clan */}
+                <Button
+                  component={Link}
+                  to="/clans/create"
+                  variant="subtle"
+                  color="gray"
+                  leftSection={<IconPlus size={18} />}
+                >
+                  Create Clan
+                </Button>
+
+                {/* Notifications */}
+                <Button
+                  variant="subtle"
+                  color="gray"
+                  disabled
+                  leftSection={<IconBell size={18} />}
+                >
+                  Notifications
+                </Button>
+
+                {/* User Menu */}
+                <Menu shadow="md" width={200}>
+                  <Menu.Target>
+                    <Button variant="subtle" color="gray">
+                      <Group gap={8}>
+                        <Avatar size="sm" radius="xl" color="orange">
+                          <IconUser size={16} />
+                        </Avatar>
+                        <Text size="sm" fw={500}>
+                          My Account
+                        </Text>
+                      </Group>
+                    </Button>
+                  </Menu.Target>
+
+                  <Menu.Dropdown>
+                    <Menu.Item
+                      component={Link}
+                      to="/profile"
+                      leftSection={<IconUser size={16} />}
+                    >
+                      Profile
+                    </Menu.Item>
+                    <Menu.Item
+                      component={Link}
+                      to="/settings"
+                      leftSection={<IconSettings size={16} />}
+                    >
+                      Settings
+                    </Menu.Item>
+                    <Menu.Divider />
+                    <Menu.Item
+                      color="red"
+                      leftSection={<IconLogout size={16} />}
+                      onClick={() => signOut()}
+                    >
+                      Sign Out
+                    </Menu.Item>
+                  </Menu.Dropdown>
+                </Menu>
+              </Group>
             </Authenticated>
           </Group>
         </Group>

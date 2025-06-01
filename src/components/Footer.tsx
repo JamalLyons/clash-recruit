@@ -12,6 +12,7 @@ import {
 } from "@mantine/core";
 import { IconBrandDiscord, IconBrandTwitter } from "@tabler/icons-react";
 import { discordInvite } from "../constants";
+import { Link } from "@tanstack/react-router";
 
 const socialLinks = [
   {
@@ -93,13 +94,31 @@ export function Footer() {
             <Text fw={700} style={{ color: "#fbbf24" }}>
               Quick Links
             </Text>
-            <Anchor href="#" c="gray.2" underline="never" size="sm">
+            <Anchor
+              component={Link}
+              to="/search"
+              c="gray.2"
+              underline="never"
+              size="sm"
+            >
               Find Clans
             </Anchor>
-            <Anchor href="#" c="gray.2" underline="never" size="sm">
+            <Anchor
+              component={Link}
+              to="/clans/create"
+              c="gray.2"
+              underline="never"
+              size="sm"
+            >
               List Your Clan
             </Anchor>
-            <Anchor href="#" c="gray.2" underline="never" size="sm">
+            <Anchor
+              component={Link}
+              to="/how-it-works"
+              c="gray.2"
+              underline="never"
+              size="sm"
+            >
               How It Works
             </Anchor>
           </Stack>
