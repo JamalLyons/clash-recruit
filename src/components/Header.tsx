@@ -11,7 +11,6 @@ import {
   Burger,
   Drawer,
   Stack,
-  ActionIcon,
 } from "@mantine/core";
 import { discordInvite } from "../constants";
 import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
