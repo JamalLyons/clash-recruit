@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "format": "npx @biomejs/biome format --write ./",
-    "lint": "npx @biomejs/biome lint --write ./",
+    "format": "pnpm dlx @biomejs/biome format --write ./",
+    "lint": "pnpm dlx @biomejs/biome lint --write ./",
     "preview": "vite preview",
     "convex": "pnpm dlx convex dev --tail-logs",
     "check-types": "tsc --noEmit"

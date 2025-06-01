@@ -1,8 +1,8 @@
 {
-    "recommendations": [
-        "aaron-bond.better-comments",
-        "biomejs.biome",
-        "vunguyentuan.vscode-css-variables",
-        "vunguyentuan.vscode-postcss",
-    ]
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "biomejs.biome",
+    "vunguyentuan.vscode-css-variables",
+    "vunguyentuan.vscode-postcss"
+  ]
 }

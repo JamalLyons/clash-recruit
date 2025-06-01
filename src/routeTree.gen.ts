@@ -10,135 +10,135 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as SignInImport } from './routes/sign-in'
-import { Route as SearchImport } from './routes/search'
-import { Route as IndexImport } from './routes/index'
-import { Route as ClansCreateImport } from './routes/clans.create'
-import { Route as ClanClanIdImport } from './routes/clan.$clanId'
+import { Route as rootRoute } from "./routes/__root";
+import { Route as SignInImport } from "./routes/sign-in";
+import { Route as SearchImport } from "./routes/search";
+import { Route as IndexImport } from "./routes/index";
+import { Route as ClansCreateImport } from "./routes/clans.create";
+import { Route as ClanClanIdImport } from "./routes/clan.$clanId";
 
 // Create/Update Routes
 
 const SignInRoute = SignInImport.update({
-  id: '/sign-in',
-  path: '/sign-in',
+  id: "/sign-in",
+  path: "/sign-in",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const SearchRoute = SearchImport.update({
-  id: '/search',
-  path: '/search',
+  id: "/search",
+  path: "/search",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ClansCreateRoute = ClansCreateImport.update({
-  id: '/clans/create',
-  path: '/clans/create',
+  id: "/clans/create",
+  path: "/clans/create",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const ClanClanIdRoute = ClanClanIdImport.update({
-  id: '/clan/$clanId',
-  path: '/clan/$clanId',
+  id: "/clan/$clanId",
+  path: "/clan/$clanId",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/search': {
-      id: '/search'
-      path: '/search'
-      fullPath: '/search'
-      preLoaderRoute: typeof SearchImport
-      parentRoute: typeof rootRoute
-    }
-    '/sign-in': {
-      id: '/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof SignInImport
-      parentRoute: typeof rootRoute
-    }
-    '/clan/$clanId': {
-      id: '/clan/$clanId'
-      path: '/clan/$clanId'
-      fullPath: '/clan/$clanId'
-      preLoaderRoute: typeof ClanClanIdImport
-      parentRoute: typeof rootRoute
-    }
-    '/clans/create': {
-      id: '/clans/create'
-      path: '/clans/create'
-      fullPath: '/clans/create'
-      preLoaderRoute: typeof ClansCreateImport
-      parentRoute: typeof rootRoute
-    }
+    "/": {
+      id: "/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof IndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/search": {
+      id: "/search";
+      path: "/search";
+      fullPath: "/search";
+      preLoaderRoute: typeof SearchImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/sign-in": {
+      id: "/sign-in";
+      path: "/sign-in";
+      fullPath: "/sign-in";
+      preLoaderRoute: typeof SignInImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/clan/$clanId": {
+      id: "/clan/$clanId";
+      path: "/clan/$clanId";
+      fullPath: "/clan/$clanId";
+      preLoaderRoute: typeof ClanClanIdImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/clans/create": {
+      id: "/clans/create";
+      path: "/clans/create";
+      fullPath: "/clans/create";
+      preLoaderRoute: typeof ClansCreateImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/search': typeof SearchRoute
-  '/sign-in': typeof SignInRoute
-  '/clan/$clanId': typeof ClanClanIdRoute
-  '/clans/create': typeof ClansCreateRoute
+  "/": typeof IndexRoute;
+  "/search": typeof SearchRoute;
+  "/sign-in": typeof SignInRoute;
+  "/clan/$clanId": typeof ClanClanIdRoute;
+  "/clans/create": typeof ClansCreateRoute;
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/search': typeof SearchRoute
-  '/sign-in': typeof SignInRoute
-  '/clan/$clanId': typeof ClanClanIdRoute
-  '/clans/create': typeof ClansCreateRoute
+  "/": typeof IndexRoute;
+  "/search": typeof SearchRoute;
+  "/sign-in": typeof SignInRoute;
+  "/clan/$clanId": typeof ClanClanIdRoute;
+  "/clans/create": typeof ClansCreateRoute;
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/search': typeof SearchRoute
-  '/sign-in': typeof SignInRoute
-  '/clan/$clanId': typeof ClanClanIdRoute
-  '/clans/create': typeof ClansCreateRoute
+  __root__: typeof rootRoute;
+  "/": typeof IndexRoute;
+  "/search": typeof SearchRoute;
+  "/sign-in": typeof SignInRoute;
+  "/clan/$clanId": typeof ClanClanIdRoute;
+  "/clans/create": typeof ClansCreateRoute;
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/search' | '/sign-in' | '/clan/$clanId' | '/clans/create'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/search' | '/sign-in' | '/clan/$clanId' | '/clans/create'
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: "/" | "/search" | "/sign-in" | "/clan/$clanId" | "/clans/create";
+  fileRoutesByTo: FileRoutesByTo;
+  to: "/" | "/search" | "/sign-in" | "/clan/$clanId" | "/clans/create";
   id:
-    | '__root__'
-    | '/'
-    | '/search'
-    | '/sign-in'
-    | '/clan/$clanId'
-    | '/clans/create'
-  fileRoutesById: FileRoutesById
+    | "__root__"
+    | "/"
+    | "/search"
+    | "/sign-in"
+    | "/clan/$clanId"
+    | "/clans/create";
+  fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  SearchRoute: typeof SearchRoute
-  SignInRoute: typeof SignInRoute
-  ClanClanIdRoute: typeof ClanClanIdRoute
-  ClansCreateRoute: typeof ClansCreateRoute
+  IndexRoute: typeof IndexRoute;
+  SearchRoute: typeof SearchRoute;
+  SignInRoute: typeof SignInRoute;
+  ClanClanIdRoute: typeof ClanClanIdRoute;
+  ClansCreateRoute: typeof ClansCreateRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -147,11 +147,11 @@ const rootRouteChildren: RootRouteChildren = {
   SignInRoute: SignInRoute,
   ClanClanIdRoute: ClanClanIdRoute,
   ClansCreateRoute: ClansCreateRoute,
-}
+};
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
 
 /* ROUTE_MANIFEST_START
 {

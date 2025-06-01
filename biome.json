@@ -17,7 +17,17 @@
     }
   },
   "formatter": {
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "ignore": [
+      "node_modules",
+      "dist",
+      "build",
+      "public",
+      "public/**/*",
+      ".vscode",
+      ".cursor",
+      ".git"
+    ]
   },
   "overrides": [
     {
