@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Container,
   Title,
@@ -96,7 +96,7 @@ function HeroSection() {
         }}
       />
       <Container size="lg" style={{ position: "relative", zIndex: 1 }}>
-        <Stack align="center" gap="xl">
+        <Stack align="center" gap="xl" px="md">
           <Badge
             size="lg"
             radius="xl"
@@ -104,7 +104,7 @@ function HeroSection() {
               background: "linear-gradient(90deg, #a78bfa 0%, #f97316 100%)",
               color: "#fff",
               fontWeight: 700,
-              fontSize: 16,
+              fontSize: "clamp(14px, 2vw, 16px)",
               padding: "0.75rem 1.5rem",
               marginBottom: rem(16),
             }}
@@ -113,7 +113,7 @@ function HeroSection() {
           </Badge>
           <Title
             order={1}
-            size={rem(64)}
+            size="clamp(40px, 8vw, 64px)"
             ta="center"
             style={{
               color: colors.accent,
@@ -128,33 +128,43 @@ function HeroSection() {
             Ultimate Clan
           </Title>
           <Text
-            size="xl"
+            size="clamp(16px, 2vw, 22px)"
             ta="center"
             maw={800}
-            style={{ color: colors.text, fontSize: 22 }}
+            style={{ color: colors.text }}
           >
             Connect with elite players, find your perfect clan, or recruit
             legendary warriors. The most powerful recruitment platform for Clash
             of Clans.
           </Text>
-          <Group mt="md">
+          <Group mt="md" wrap="wrap" justify="center">
             <Button
-              size="lg"
+              component={Link}
+              to="/search"
+              size="md"
               variant="filled"
               color="orange"
               radius="md"
               leftSection={<IconSearch size={22} />}
-              style={{ fontWeight: 700, fontSize: 18 }}
+              style={{
+                fontWeight: 700,
+                fontSize: "clamp(16px, 2vw, 18px)",
+              }}
             >
               Find Your Clan
             </Button>
             <Button
-              size="lg"
+              component={Link}
+              to="/clans/create"
+              size="md"
               variant="outline"
               color="orange"
               radius="md"
               leftSection={<IconUsers size={22} />}
-              style={{ fontWeight: 700, fontSize: 18 }}
+              style={{
+                fontWeight: 700,
+                fontSize: "clamp(16px, 2vw, 18px)",
+              }}
             >
               List Your Clan
             </Button>
@@ -167,7 +177,13 @@ function HeroSection() {
 
 function FeaturesSection() {
   return (
-    <Box style={{ position: "relative", zIndex: 1, padding: "80px 0" }}>
+    <Box
+      style={{
+        position: "relative",
+        zIndex: 1,
+        padding: "clamp(40px, 10vw, 80px) 0",
+      }}
+    >
       {/* Glowing orb background */}
       <Box
         style={{
@@ -188,20 +204,21 @@ function FeaturesSection() {
           <Title
             order={2}
             ta="center"
-            style={{ fontWeight: 800, color: colors.text, fontSize: 38 }}
+            size="clamp(32px, 4vw, 38px)"
+            style={{ fontWeight: 800, color: colors.text }}
           >
             Why Choose Clash Recruit?
           </Title>
           <Text
-            size="lg"
+            size="clamp(16px, 2vw, 20px)"
             ta="center"
             maw={800}
-            style={{ color: colors.text, fontSize: 20 }}
+            style={{ color: colors.text }}
           >
             The ultimate platform connecting Clash of Clans players and clans
             worldwide
           </Text>
-          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl">
+          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl" px="md">
             <Card
               withBorder
               p="xl"
@@ -398,7 +415,14 @@ function StatsSection() {
 
 function TestimonialsSection() {
   return (
-    <Box style={{ position: "relative", zIndex: 1, padding: "80px 0" }}>
+    <Box
+      style={{
+        position: "relative",
+        zIndex: 1,
+        padding: "80px 0",
+        overflowX: "hidden",
+      }}
+    >
       {/* Glowing orb background */}
       <Box
         style={{
@@ -415,8 +439,16 @@ function TestimonialsSection() {
           transform: "translateX(-50%)",
         }}
       />
-      <Container size="lg" style={{ position: "relative", zIndex: 1 }}>
-        <Stack align="center" gap="xl">
+      <Container
+        size="lg"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          maxWidth: "100%",
+          padding: 0,
+        }}
+      >
+        <Stack align="center" gap="xl" style={{ width: "100%" }}>
           <Title
             order={2}
             ta="center"
@@ -430,9 +462,13 @@ function TestimonialsSection() {
             slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
             slideGap={{ base: "xl", sm: "md" }}
             emblaOptions={{ loop: true, align: "start", slidesToScroll: 1 }}
+            style={{ width: "100%", maxWidth: "100vw" }}
           >
             {testimonials.map((testimonial) => (
-              <Carousel.Slide key={testimonial.id}>
+              <Carousel.Slide
+                key={testimonial.id}
+                style={{ width: "100%", maxWidth: "100vw" }}
+              >
                 <Card
                   withBorder
                   p="xl"
@@ -446,6 +482,9 @@ function TestimonialsSection() {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
+                    width: "100%",
+                    maxWidth: "100vw",
+                    boxSizing: "border-box",
                   }}
                 >
                   <Text
@@ -607,7 +646,7 @@ function CTASection() {
 
 function Index() {
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <HeroSection />
       <FeaturesSection />
       <StatsSection />

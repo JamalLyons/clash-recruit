@@ -40,13 +40,13 @@ function SearchSkeleton() {
     >
       <Stack gap="xl" style={{ height: "100%" }}>
         <Center>
-          <Skeleton height={40} width={200} />
+          <Skeleton height={40} width="60%" />
         </Center>
 
         <Paper p="md" withBorder>
           <Stack gap="md">
-            <Skeleton height={36} />
-            <Skeleton height={20} width={100} />
+            <Skeleton height={36} width="100%" />
+            <Skeleton height={20} width="40%" />
           </Stack>
         </Paper>
 
@@ -55,26 +55,26 @@ function SearchSkeleton() {
             <Card key={i} withBorder shadow="sm" radius="md">
               <Stack gap="md">
                 <Group>
-                  <Skeleton height={48} circle />
+                  <Skeleton height={48} width={48} circle />
                   <div style={{ flex: 1 }}>
                     <Skeleton height={24} width="60%" mb={8} />
                     <Group gap="xs">
-                      <Skeleton height={20} width={80} />
-                      <Skeleton height={20} width={100} />
+                      <Skeleton height={20} width="40%" />
+                      <Skeleton height={20} width="60%" />
                     </Group>
                   </div>
                 </Group>
 
-                <Skeleton height={40} />
+                <Skeleton height={40} width="100%" />
 
                 <Group gap="xs">
                   <Group gap="xs">
-                    <Skeleton height={16} circle />
-                    <Skeleton height={16} width={40} />
+                    <Skeleton height={16} width={16} circle />
+                    <Skeleton height={16} width="40%" />
                   </Group>
                   <Group gap="xs">
-                    <Skeleton height={16} circle />
-                    <Skeleton height={16} width={40} />
+                    <Skeleton height={16} width={16} circle />
+                    <Skeleton height={16} width="40%" />
                   </Group>
                 </Group>
 
@@ -145,12 +145,14 @@ function RouteComponent() {
       >
         <Stack gap="xl" style={{ height: "100%" }}>
           <Center>
-            <Title order={1}>Clan Search</Title>
+            <Title order={1} size="h1">
+              Clan Search
+            </Title>
           </Center>
 
           <Paper p="md" withBorder>
             <Stack gap="md">
-              <Group>
+              <Stack gap="md">
                 <TextInput
                   placeholder="Search clans..."
                   value={searchQuery}
@@ -158,7 +160,7 @@ function RouteComponent() {
                     setSearchQuery(event.currentTarget.value)
                   }
                   leftSection={<IconSearch size={16} />}
-                  style={{ flex: 1 }}
+                  size="md"
                 />
                 <SegmentedControl
                   value={searchType}
@@ -167,8 +169,10 @@ function RouteComponent() {
                     { label: "Name", value: "name" },
                     { label: "Clan ID", value: "id" },
                   ]}
+                  size="md"
+                  fullWidth
                 />
-              </Group>
+              </Stack>
               <Text size="sm" c="dimmed">
                 {filteredClans.length} clans found
               </Text>
@@ -181,26 +185,26 @@ function RouteComponent() {
                 <Card key={i} withBorder shadow="sm" radius="md">
                   <Stack gap="md">
                     <Group>
-                      <Skeleton height={48} circle />
+                      <Skeleton height={48} width={48} circle />
                       <div style={{ flex: 1 }}>
                         <Skeleton height={24} width="60%" mb={8} />
                         <Group gap="xs">
-                          <Skeleton height={20} width={80} />
-                          <Skeleton height={20} width={100} />
+                          <Skeleton height={20} width="40%" />
+                          <Skeleton height={20} width="60%" />
                         </Group>
                       </div>
                     </Group>
 
-                    <Skeleton height={40} />
+                    <Skeleton height={40} width="100%" />
 
                     <Group gap="xs">
                       <Group gap="xs">
-                        <Skeleton height={16} circle />
-                        <Skeleton height={16} width={40} />
+                        <Skeleton height={16} width={16} circle />
+                        <Skeleton height={16} width="40%" />
                       </Group>
                       <Group gap="xs">
-                        <Skeleton height={16} circle />
-                        <Skeleton height={16} width={40} />
+                        <Skeleton height={16} width={16} circle />
+                        <Skeleton height={16} width="40%" />
                       </Group>
                     </Group>
 
@@ -229,7 +233,7 @@ function RouteComponent() {
                         <Text fw={500} size="lg">
                           {clan.name}
                         </Text>
-                        <Group gap="xs">
+                        <Group gap="xs" wrap="wrap">
                           <Badge size="sm">Level {clan.level}</Badge>
                           <Badge size="sm" color="blue">
                             {clan.warRecord}
@@ -242,7 +246,7 @@ function RouteComponent() {
                       {clan.description}
                     </Text>
 
-                    <Group gap="xs">
+                    <Group gap="xs" wrap="wrap">
                       <Group gap="xs">
                         <IconUsers size={16} />
                         <Text size="sm">{clan.members.total}/50</Text>
@@ -253,22 +257,24 @@ function RouteComponent() {
                       </Group>
                     </Group>
 
-                    <Group gap="xs" mt="auto">
+                    <Group gap="xs" mt="auto" wrap="wrap">
                       <Button
                         component={Link}
                         to={`/clan/${clan.id}`}
                         variant="light"
+                        size="md"
                         fullWidth
                       >
                         View Clan
                       </Button>
                       <Button
                         component={Link}
-                        to={`/clan/${clan.id}`}
-                        variant="filled"
+                        to={clan.socialLinks.discord}
+                        variant="outline"
+                        size="md"
                         fullWidth
                       >
-                        Apply to Clan
+                        Join Discord
                       </Button>
                     </Group>
                   </Stack>
