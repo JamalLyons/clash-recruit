@@ -99,7 +99,7 @@ export function Header() {
                 {/* Create Clan */}
                 <Button
                   component={Link}
-                  to="/clan/create"
+                  to="/clans/create"
                   variant="subtle"
                   color="gray"
                   leftSection={<IconPlus size={18} />}
@@ -111,6 +111,7 @@ export function Header() {
                 <Button
                   variant="subtle"
                   color="gray"
+                  disabled
                   leftSection={<IconBell size={18} />}
                 >
                   Notifications

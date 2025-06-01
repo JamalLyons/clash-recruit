@@ -12,7 +12,10 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as SignInImport } from './routes/sign-in'
+import { Route as SearchImport } from './routes/search'
 import { Route as IndexImport } from './routes/index'
+import { Route as ClansCreateImport } from './routes/clans.create'
+import { Route as ClanClanIdImport } from './routes/clan.$clanId'
 
 // Create/Update Routes
 
@@ -22,9 +25,27 @@ const SignInRoute = SignInImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const SearchRoute = SearchImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ClansCreateRoute = ClansCreateImport.update({
+  id: '/clans/create',
+  path: '/clans/create',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ClanClanIdRoute = ClanClanIdImport.update({
+  id: '/clan/$clanId',
+  path: '/clan/$clanId',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +60,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchImport
+      parentRoute: typeof rootRoute
+    }
     '/sign-in': {
       id: '/sign-in'
       path: '/sign-in'
       fullPath: '/sign-in'
       preLoaderRoute: typeof SignInImport
+      parentRoute: typeof rootRoute
+    }
+    '/clan/$clanId': {
+      id: '/clan/$clanId'
+      path: '/clan/$clanId'
+      fullPath: '/clan/$clanId'
+      preLoaderRoute: typeof ClanClanIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/clans/create': {
+      id: '/clans/create'
+      path: '/clans/create'
+      fullPath: '/clans/create'
+      preLoaderRoute: typeof ClansCreateImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +95,58 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/sign-in': typeof SignInRoute
+  '/clan/$clanId': typeof ClanClanIdRoute
+  '/clans/create': typeof ClansCreateRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/sign-in': typeof SignInRoute
+  '/clan/$clanId': typeof ClanClanIdRoute
+  '/clans/create': typeof ClansCreateRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/search': typeof SearchRoute
   '/sign-in': typeof SignInRoute
+  '/clan/$clanId': typeof ClanClanIdRoute
+  '/clans/create': typeof ClansCreateRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sign-in'
+  fullPaths: '/' | '/search' | '/sign-in' | '/clan/$clanId' | '/clans/create'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sign-in'
-  id: '__root__' | '/' | '/sign-in'
+  to: '/' | '/search' | '/sign-in' | '/clan/$clanId' | '/clans/create'
+  id:
+    | '__root__'
+    | '/'
+    | '/search'
+    | '/sign-in'
+    | '/clan/$clanId'
+    | '/clans/create'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SearchRoute: typeof SearchRoute
   SignInRoute: typeof SignInRoute
+  ClanClanIdRoute: typeof ClanClanIdRoute
+  ClansCreateRoute: typeof ClansCreateRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SearchRoute: SearchRoute,
   SignInRoute: SignInRoute,
+  ClanClanIdRoute: ClanClanIdRoute,
+  ClansCreateRoute: ClansCreateRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +160,26 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/sign-in"
+        "/search",
+        "/sign-in",
+        "/clan/$clanId",
+        "/clans/create"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
+    "/search": {
+      "filePath": "search.tsx"
+    },
     "/sign-in": {
       "filePath": "sign-in.tsx"
+    },
+    "/clan/$clanId": {
+      "filePath": "clan.$clanId.tsx"
+    },
+    "/clans/create": {
+      "filePath": "clans.create.tsx"
     }
   }
 }
